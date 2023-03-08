@@ -6,25 +6,11 @@ import { motion, useScroll } from "framer-motion";
 export default function Home() {
   return (
     <MainStyleContainer>
-      <MainStyle
-        as={motion.div}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1, rotateZ: 360 }}
-      >
-        <Image
-          src="/images/earth.jpg"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-          alt="지구"
-        />
-
-        <h1>지구의 남은</h1>
-        <h1>수명은 얼마일까요?</h1>
-        <Link href="/login">
-          <button>지구야 기다려!!</button>
-        </Link>
-      </MainStyle>
+      <h1>지구의 남은</h1>
+      <h1>수명은 얼마일까요?</h1>
+      <Link href="/login">
+        <button>지구야 기다려!!</button>
+      </Link>
     </MainStyleContainer>
   );
 }

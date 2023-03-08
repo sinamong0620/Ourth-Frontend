@@ -24,15 +24,12 @@ const LoginInput = () => {
       Router.push({
         pathname: "/main",
       });
+
       localStorage.setItem("tokenKey", response.data.accessToken);
       localStorage.setItem("refreshKey", response.data.refreshToken);
     } catch (error) {
       alert(error);
     }
-    // Router.push({
-    //   pathname: "/",
-    //   query: { dataid: res.data.id },
-    // });
   };
   return (
     <LoginForm>

@@ -6,7 +6,7 @@ import useMissionList from "../hooks/useMissionList";
 import Link from "next/link";
 
 export default function Ranking() {
-  const { anoterranking, saveRanking, mySchoolRanking } = useRankingList();
+  const { anoterranking, mySchoolRanking } = useRankingList();
   console.log(anoterranking);
   const imagesFile = [
     "/images/gold1.png",
@@ -33,15 +33,7 @@ export default function Ranking() {
           </div>
         ))}
         <h1>우리 학교 랭킹</h1>
-        {/* <div key={mySchoolRanking.id}>
-            <EachRanking
-              medal={imagesFile[school.ranking - 1]}
-              ranking={school.ranking}
-              schoolName={school.schoolName}
-              point={school.point}
-            />
-          </div>
-         */}
+
         {mySchoolRanking.map((school) => (
           <div key={school.id}>
             <EachRanking

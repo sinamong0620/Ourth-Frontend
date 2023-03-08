@@ -22,7 +22,7 @@ export default function Join() {
         schoolName: schoolName,
         username: username,
       });
-      console.log(response);
+
       Router.push({
         pathname: "/login",
       });

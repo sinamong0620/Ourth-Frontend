@@ -15,15 +15,14 @@ export default function Mission() {
     try {
       const response = await axios.post(
         "https://ourth.duckdns.org/usermission/add",
+        {}, //post는 형식이 {data,{config}} 이렇게 해야함
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
           },
-          withCredentials: true,
         }
       );
-
-      console.log(response);
+      console.log("이거 왜 않되");
     } catch (error) {
       alert(error);
     }
