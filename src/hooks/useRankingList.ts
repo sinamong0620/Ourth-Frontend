@@ -9,7 +9,10 @@ interface School {
 }
 
 const useRankingList = () => {
+  const renderingNumber = 3; // 재사용성 높은 코드
   const [ranking, setRanking] = useState<School[]>([]);
+  const [anoterranking, setAnoterranking] = useState<School[]>([]);
+  const [mySchoolRanking, setMySchoolRanking] = useState<School[]>([]);
 
   const saveRanking = useCallback(async () => {
     const response = await axios.get<School[]>(
@@ -22,28 +25,21 @@ const useRankingList = () => {
       }
     );
 
-    setRanking(response.data);
+    const temp = [];
 
-    // for (let i of ranking) {
-    //   if (i.ranking < 4) {
-    //     console.log(i);
-    //     setreRanking([
-    //       ...ranking,
-    //       {
-    //         id: i.id,
-    //         schoolName: i.schoolName,
-    //         point: i.point,
-    //         ranking: i.ranking,
-    //       },
-    //     ]);
-    //   }
-    // }
+    for (let i = 0; i < renderingNumber; i++) {
+      temp.push(response.data[i]);
+    }
+
+    setRanking(response.data);
+    setAnoterranking(temp);
+    setMySchoolRanking([response.data[response.data.length - 1]]);
   }, []);
 
   useEffect(() => {
     saveRanking();
   }, [saveRanking]);
 
-  return { ranking, saveRanking };
+  return { anoterranking, saveRanking, mySchoolRanking };
 };
 export default useRankingList;

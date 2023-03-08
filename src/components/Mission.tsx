@@ -3,29 +3,22 @@ import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
 
 const Mission = () => {
-  const { randomMission, saveRandomMission, userInfo } = useMissionList();
+  const { remainMission } = useMissionList();
 
   return (
     <MissionContainer>
       <div>미션</div>
       <MissionIconContainer>
         <EachIconContainer>
-          <div>
-            <Image src="/images/accept.png" width={47} height={47} alt="체크" />
-          </div>
-          <div>1개</div>
-          <div>오늘</div>
+          <Image src="/images/fire.png" width={60} height={60} alt="체크" />
+          <CurrentMissionClear>
+            <div>이번 주 미션</div>
+            <div>
+              <b>{remainMission.length}개</b> 남음
+            </div>
+          </CurrentMissionClear>
         </EachIconContainer>
-        <EachIconContainer>
-          <Image src="/images/insignia.png" width={53} height={53} alt="체크" />
-          <div>1개</div>
-          <div>뱃지</div>
-        </EachIconContainer>
-        <EachIconContainer>
-          <Image src="/images/fire.png" width={52} height={52} alt="체크" />
-          <div>1일</div>
-          <div>연속</div>
-        </EachIconContainer>
+        <ReaminDayCss>3일 남음</ReaminDayCss>
       </MissionIconContainer>
     </MissionContainer>
   );
@@ -37,7 +30,7 @@ const MissionContainer = styled.div`
   height: 10.5rem;
   border-radius: 1.8rem;
   margin: 0 auto;
-  padding: 1.4rem;
+  padding: 1.4rem 3rem 0rem 2rem;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1.4rem;
@@ -45,23 +38,39 @@ const MissionContainer = styled.div`
 
 const MissionIconContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 0.3rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 `;
 
 const EachIconContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
 
-  div:nth-child(2) {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    font-weight: 530;
+  img {
+    margin-right: 1rem;
+  }
+`;
+
+const CurrentMissionClear = styled.div`
+  font-weight: 200;
+  div:first-child {
+    font-size: 1.4rem;
   }
 
   div:last-child {
-    font-size: 0.9rem;
-    font-weight: 100;
+    font-size: 2rem;
   }
+`;
+
+const ReaminDayCss = styled.div`
+  width: 4rem;
+  height: 2.3rem;
+  background: #62a167;
+  border-radius: 0.8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
 `;

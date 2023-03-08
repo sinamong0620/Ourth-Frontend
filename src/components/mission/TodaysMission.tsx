@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
 import axios from "axios";
-import useMissionList from "../../hooks/useMissionList";
 
 interface IProps {
   id: number;

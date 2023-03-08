@@ -3,15 +3,18 @@ import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
 
 const Profile = () => {
-  const { randomMission, saveRandomMission, userInfo } = useMissionList();
+  const { userInfo } = useMissionList();
 
   return (
     <MissionContainer>
-      <Image src="/images/user.png" alt="사진임" width={60} height={60} />
-      <UserMessage>
-        <div>안녕하세요</div>
-        <div>{`${userInfo?.username}`}님</div>
-      </UserMessage>
+      <DisplayFlex>
+        <Image src="/images/user.png" alt="사진임" width={60} height={60} />
+        <UserMessage>
+          <div>안녕하세요</div>
+          <div>{`${userInfo?.username ?? ""}`}님</div>
+        </UserMessage>
+      </DisplayFlex>
+      <PointCss>{`${userInfo?.point ?? ""}`}pt</PointCss>
     </MissionContainer>
   );
 };
@@ -24,11 +27,16 @@ const MissionContainer = styled.div`
   margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0rem 3rem 0rem 2rem;
+  justify-content: space-between;
 
   img {
     margin-right: 1rem;
   }
+`;
+const DisplayFlex = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const UserMessage = styled.div`
@@ -39,10 +47,21 @@ const UserMessage = styled.div`
 
   div:first-child {
     font-size: 1rem;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.2rem;
   }
 
   div:last-child {
     font-size: 1.5rem;
   }
+`;
+
+const PointCss = styled.div`
+  width: 4rem;
+  height: 2.3rem;
+  background: #62a167;
+  border-radius: 0.8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

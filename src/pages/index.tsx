@@ -1,14 +1,28 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
+import { motion, useScroll } from "framer-motion";
+
 export default function Home() {
   return (
     <MainStyleContainer>
-      <MainStyle>
-        <Image src="/images/600.jpg" height={500} width={500} alt="공사중" />
-        <h1>준비중</h1>
+      <MainStyle
+        as={motion.div}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1, rotateZ: 360 }}
+      >
+        <Image
+          src="/images/earth.jpg"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center"
+          alt="지구"
+        />
+
+        <h1>지구의 남은</h1>
+        <h1>수명은 얼마일까요?</h1>
         <Link href="/login">
-          <button>지구 살리기</button>
+          <button>지구야 기다려!!</button>
         </Link>
       </MainStyle>
     </MainStyleContainer>
@@ -19,10 +33,9 @@ const MainStyleContainer = styled.div`
   max-width: 480px;
   margin: 0 auto;
 `;
-const MainStyle = styled.div`
-  background-color: #f6f6f6;
+const MainStyle = styled(motion.div)`
+  background-color: black;
   max-width: 480px;
-  padding: 0 1.5rem 0 1.5rem;
   min-height: 100vh;
 
   button {
@@ -40,5 +53,9 @@ const MainStyle = styled.div`
   a:active {
     color: black;
     text-decoration: none;
+  }
+
+  h1 {
+    color: white;
   }
 `;

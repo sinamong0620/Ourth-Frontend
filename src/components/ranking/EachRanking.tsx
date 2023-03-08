@@ -1,14 +1,22 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Ranking from "@/src/pages/ranking";
 interface IProps {
+  medal: string;
   ranking: number;
   schoolName: string;
   point: number;
 }
+
 const eachRanking = (props: IProps) => {
   return (
     <EachRankingContainer>
-      <Image src="/images/gold1.png" alt="사진임" width={60} height={60} />
+      {props.ranking < 4 ? (
+        <Image src={props.medal} alt="사진임" width={60} height={60} />
+      ) : (
+        <NoMedalRankingCss>{props.ranking}</NoMedalRankingCss>
+      )}
+
       <div>
         <h3>{props.schoolName}</h3>
         <div>{props.point}pt</div>
@@ -28,4 +36,8 @@ const EachRankingContainer = styled.div`
   img {
     margin-right: 1rem;
   }
+`;
+
+const NoMedalRankingCss = styled.h1`
+  margin: 0rem 1.5rem 0rem 1rem;
 `;

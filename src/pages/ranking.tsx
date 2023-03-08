@@ -6,8 +6,13 @@ import useMissionList from "../hooks/useMissionList";
 import Link from "next/link";
 
 export default function Ranking() {
-  const { ranking, saveRanking } = useRankingList();
-
+  const { anoterranking, saveRanking, mySchoolRanking } = useRankingList();
+  console.log(anoterranking);
+  const imagesFile = [
+    "/images/gold1.png",
+    "/images/sliver.png",
+    "/images/bronze.png",
+  ];
   return (
     <MainStyleContainer>
       <MainStyle>
@@ -17,9 +22,10 @@ export default function Ranking() {
         <Header />
         <h1>랭킹</h1>
 
-        {ranking.map((school) => (
+        {anoterranking.map((school) => (
           <div key={school.id}>
             <EachRanking
+              medal={imagesFile[school.ranking - 1]}
               ranking={school.ranking}
               schoolName={school.schoolName}
               point={school.point}
@@ -27,20 +33,40 @@ export default function Ranking() {
           </div>
         ))}
         <h1>우리 학교 랭킹</h1>
+        {/* <div key={mySchoolRanking.id}>
+            <EachRanking
+              medal={imagesFile[school.ranking - 1]}
+              ranking={school.ranking}
+              schoolName={school.schoolName}
+              point={school.point}
+            />
+          </div>
+         */}
+        {mySchoolRanking.map((school) => (
+          <div key={school.id}>
+            <EachRanking
+              medal={imagesFile[school.ranking - 1]}
+              ranking={school.ranking}
+              schoolName={school.schoolName}
+              point={school.point}
+            />
+          </div>
+        ))}
       </MainStyle>
     </MainStyleContainer>
   );
 }
 
 const MainStyleContainer = styled.div`
-  max-width: 480px;
+  max-width: 30rem;
   margin: 0 auto;
 `;
 
 const MainStyle = styled.div`
   background-color: #f6f6f6;
-  max-width: 480px;
-  padding: 0 1.5rem 0 1.5rem;
+  max-width: 30rem;
+  padding: 0 24px 0 24px;
+  min-height: 100vh;
 
   a:visited,
   a:link,

@@ -20,7 +20,7 @@ const LoginInput = () => {
         email: loginId,
         password: loginPassword,
       });
-      console.log(response);
+
       Router.push({
         pathname: "/main",
       });

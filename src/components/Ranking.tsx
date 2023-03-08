@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
+import useRankingList from "../hooks/useRankingList";
 
 const Ranking = () => {
-  const { randomMission, saveRandomMission, userInfo } = useMissionList();
+  const { userInfo } = useMissionList();
+  const { mySchoolRanking } = useRankingList();
   return (
     <MissionContainer>
       <MissionTextContain>
         <div>랭킹</div>
         <div>
           <div>{userInfo?.schoolName}</div>
-          <div>12위</div>
+          <div>{mySchoolRanking[0]?.ranking}위</div>
         </div>
       </MissionTextContain>
       <Image src="/images/ranking.png" alt="키보드" width={165} height={150} />

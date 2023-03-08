@@ -19,7 +19,7 @@ interface RandomMission {
 const useMissionList = () => {
   const [randomMission, setRandomMission] = useState<Random[]>([]);
   const [userInfo, setuserInfo] = useState<RandomMission>();
-
+  let remainMission = [];
   const saveRandomMission = useCallback(async () => {
     const response = await axios.get<RandomMission>(
       `https://ourth.duckdns.org/user`,
@@ -35,10 +35,16 @@ const useMissionList = () => {
     setuserInfo(response.data);
   }, []);
 
+  for (let i of randomMission) {
+    if (i.status === false) {
+      remainMission.push(i);
+    }
+  }
+
   useEffect(() => {
     saveRandomMission();
   }, [saveRandomMission]);
 
-  return { randomMission, saveRandomMission, userInfo };
+  return { randomMission, saveRandomMission, userInfo, remainMission };
 };
 export default useMissionList;
