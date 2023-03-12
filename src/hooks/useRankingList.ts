@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
-import { idText } from "typescript";
+
 interface School {
   id: number;
   schoolName: string;

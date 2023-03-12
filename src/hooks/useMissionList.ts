@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
-export interface Random {
+interface Random {
   createDate: string;
   id: number;
   point: number;

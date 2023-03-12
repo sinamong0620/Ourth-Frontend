@@ -8,9 +8,6 @@ export default function Home() {
     <MainStyleContainer>
       <h1>지구의 남은</h1>
       <h1>수명은 얼마일까요?</h1>
-      <Link href="/login">
-        <button>지구야 기다려!!</button>
-      </Link>
     </MainStyleContainer>
   );
 }

@@ -1,37 +1,54 @@
 import styled from "styled-components";
-export default function test() {
-  const LogoutFunc = () => {
-    localStorage.clear();
-    console.log("로그아웃됨");
-  };
+import Main from "../components/main/Main";
+import Link from "next/link";
+export default function Test() {
   return (
     <>
-      <StickyDivContainer>
-        <div>
-          <StickyDiv color="green">
-            <button onClick={LogoutFunc}>로그아웃</button>
-          </StickyDiv>
-        </div>
-        <div>
-          <StickyDiv color="blue"></StickyDiv>
-        </div>
-        <div>
-          <StickyDiv color="black"></StickyDiv>
-        </div>
-        <div>
-          <StickyDiv color="yellow"></StickyDiv>
-        </div>
-      </StickyDivContainer>
+      <MainStyleContainer>
+        <video src="/videos/video.mp4" autoPlay loop />
+
+        <ScrollHeight>
+          <MainTextContainer>
+            <Main text="지구의 수명" start={500} end={1500} />
+            <Main text="고작 100년" start={2000} end={3000} />
+            <Main text="고작 50년" start={3500} end={4500} />
+            <Main text="고작 20년" start={5000} end={6000} />
+            <Main text="밖에 남지 않았습니다." start={6500} end={7500} />
+            <Main text="지구를 도와주세요." start={8000} end={9000} />
+            <Main text="지구를 도와주세요." start={8000} end={9000} />
+            <Link href="/login">
+              <button>지구야 기다려!!</button>
+            </Link>
+          </MainTextContainer>
+        </ScrollHeight>
+      </MainStyleContainer>
     </>
   );
 }
-
-const StickyDivContainer = styled.div``;
-
-const StickyDiv = styled.div`
-  position: sticky;
-  top: 0px;
+const MainStyleContainer = styled.div`
+  video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+const ScrollHeight = styled.div`
+  height: 700rem;
+`;
+const MainTextContainer = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
-  background: ${(props) => props.color};
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+
+  button {
+    position: absolute;
+    top: 90%;
+  }
 `;
