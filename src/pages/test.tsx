@@ -5,7 +5,7 @@ export default function Test() {
   return (
     <>
       <MainStyleContainer>
-        <video src="/videos/video.mp4" muted autoPlay loop />
+        <video src="/videos/video.mp4" muted autoPlay loop playsInline />
 
         <ScrollHeight>
           <MainTextContainer>
