@@ -5,7 +5,7 @@ export default function Test() {
   return (
     <>
       <MainStyleContainer>
-        <video src="/videos/video.mp4" autoPlay loop />
+        <video src="/videos/video.mp4" muted autoPlay loop />
 
         <ScrollHeight>
           <MainTextContainer>
@@ -31,6 +31,9 @@ const MainStyleContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
   }
 `;
 const ScrollHeight = styled.div`
