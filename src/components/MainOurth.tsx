@@ -8,8 +8,27 @@ import Community from "./Community";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import useMissionList from "../hooks/useMissionList";
+import AddMission from "./AddMission";
+import axios from "axios";
 
 const MainOurth = () => {
+  const { remainMission } = useMissionList();
+  const UserMission = async () => {
+    try {
+      const response = await axios.post(
+        "https://ourth.duckdns.org/usermission/add",
+        {}, //post는 형식이 {data,{config}} 이렇게 해야함
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
+          },
+        }
+      );
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <MainStyleContainer>
       <MainStyle>
@@ -28,7 +47,13 @@ const MainOurth = () => {
           transition={{ delay: 0.3 }}
         >
           <Link href="/mission">
-            <Mission />
+            {remainMission.length === 0 ? (
+              <button onClick={UserMission}>
+                <AddMission />
+              </button>
+            ) : (
+              <Mission />
+            )}
           </Link>
         </motion.div>
 
@@ -49,7 +74,7 @@ const MainOurth = () => {
         >
           <TipCommunityContain>
             <Tip />
-            <Community />
+            <Tip />
           </TipCommunityContain>
         </motion.div>
       </MainStyle>
@@ -62,6 +87,7 @@ export default MainOurth;
 const MainStyleContainer = styled.div`
   max-width: 480px;
   margin: 0 auto;
+  text-align: left;
 `;
 const MainStyle = styled.div`
   background-color: #f6f6f6;
@@ -73,6 +99,12 @@ const MainStyle = styled.div`
   a:active {
     color: black;
     text-decoration: none;
+  }
+
+  button {
+    border: none;
+    width: 100%;
+    background: none;
   }
 `;
 

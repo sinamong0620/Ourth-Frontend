@@ -21,14 +21,44 @@ const LoginInput = () => {
         password: loginPassword,
       });
 
+      localStorage.setItem("tokenKey", response.data.accessToken);
+      localStorage.setItem("refreshKey", response.data.refreshToken);
+
       Router.push({
         pathname: "/main",
       });
 
-      localStorage.setItem("tokenKey", response.data.accessToken);
-      localStorage.setItem("refreshKey", response.data.refreshToken);
+      setInterval(onSilentRefresh, 1740000);
     } catch (error) {
       alert(error);
+    }
+  };
+
+  const onSilentRefresh = async () => {
+    try {
+      const response = await axios.post(
+        "https://ourth.duckdns.org/refresh",
+        { refreshToken: localStorage.getItem("refreshKey") },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
+          },
+          withCredentials: true,
+        }
+      );
+
+      localStorage.setItem("tokenKey", response.data.accessToken);
+      localStorage.setItem("refreshKey", response.data.refreshToken);
+
+      // Router.push({
+      //   pathname: "/main",
+      // });
+
+      setInterval(onSilentRefresh, 1740000);
+    } catch (error) {
+      Router.push({
+        pathname: "/login",
+      });
     }
   };
   return (

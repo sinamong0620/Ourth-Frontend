@@ -30,10 +30,6 @@ const Footer = () => {
         />
         <div>커뮤니티</div>
       </div>
-      <div>
-        <Image src="/images/idea.png" alt="팁" width={30} height={30} />
-        <div>팁</div>
-      </div>
     </FotoerContainer>
   );
 };
