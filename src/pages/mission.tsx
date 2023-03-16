@@ -4,7 +4,6 @@ import CompletedMission from "../components/mission/CompletedMission";
 import useMission from "../hooks/useMission";
 import Link from "next/link";
 import { useEffect } from "react";
-import Footer from "../components/Footer";
 export default function Mission() {
   const { userMission, saveRandomMission } = useMission();
 

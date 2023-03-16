@@ -8,7 +8,7 @@ interface RandomMission {
   schoolName: string;
   point: number;
   missionPresence: true;
-  missionCount: 4; //Random과 Random[]차이가뭐임
+  missionCount: number; //Random과 Random[]차이가뭐임
 }
 
 const useMissionList = () => {
