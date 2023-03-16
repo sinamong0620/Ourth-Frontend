@@ -24,7 +24,7 @@ const MissionContainer = styled.div`
   background: white;
   border-radius: 1.8rem;
   font-weight: 600;
-  margin-right: 1rem;
+  margin-right: 1.3rem;
   cursor: pointer;
   border-radius: 1.8rem;
   width: 23rem;

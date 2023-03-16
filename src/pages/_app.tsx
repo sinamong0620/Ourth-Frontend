@@ -1,6 +1,15 @@
-import type { AppProps } from "next/app";
+// import type { AppProps } from "next/app";
+import Layout from "../components/Layout";
 import "../../styles/global.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+type AppProps = {
+  Component: React.ElementType;
+};
+
+export default function App({ Component }: AppProps) {
+  return (
+    <Layout>
+      <Component />
+    </Layout>
+  );
 }

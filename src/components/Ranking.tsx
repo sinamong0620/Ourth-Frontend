@@ -2,16 +2,17 @@ import styled from "styled-components";
 import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
 import useRankingList from "../hooks/useRankingList";
-
-const Ranking = () => {
-  const { userInfo } = useMissionList();
+interface IProps {
+  schoolName: string;
+}
+const Ranking = (props: IProps) => {
   const { mySchoolRanking } = useRankingList();
   return (
     <MissionContainer>
       <MissionTextContain>
         <div>랭킹</div>
         <div>
-          <div>{userInfo?.schoolName}</div>
+          <div>{props.schoolName}</div>
           <div>{mySchoolRanking[0]?.ranking}위</div>
         </div>
       </MissionTextContain>

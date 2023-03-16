@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
-
-const Profile = () => {
-  const { userInfo } = useMissionList();
-
+interface IProps {
+  username: string;
+  userpoint: number;
+}
+const Profile = (props: IProps) => {
   return (
     <MissionContainer>
       <DisplayFlex>
         <Image src="/images/user.png" alt="사진임" width={60} height={60} />
         <UserMessage>
           <div>안녕하세요</div>
-          <div>{`${userInfo?.username ?? ""}`}님</div>
+          <div>{`${props.username ?? ""}`}님</div>
         </UserMessage>
       </DisplayFlex>
-      <PointCss>{`${userInfo?.point ?? ""}`}pt</PointCss>
+      <PointCss>{`${props.userpoint ?? ""}`}pt</PointCss>
     </MissionContainer>
   );
 };
@@ -56,7 +57,7 @@ const UserMessage = styled.div`
 `;
 
 const PointCss = styled.div`
-  width: 4rem;
+  width: 5rem;
   height: 2.3rem;
   background: #62a167;
   border-radius: 0.8rem;
@@ -64,4 +65,5 @@ const PointCss = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
 `;

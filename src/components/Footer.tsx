@@ -1,34 +1,43 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   return (
     <FotoerContainer>
       <div>
-        <Image src="/images/home.png" alt="홈" width={30} height={30} />
-        <div>홈</div>
+        <Link href="/main">
+          <Image src="/images/home.png" alt="홈" width={30} height={30} />
+          <div>홈</div>
+        </Link>
       </div>
 
       <div>
-        <Image src="/images/checked.png" alt="미션" width={30} height={30} />
-        <div>미션</div>
+        <Link href="/mission">
+          <Image src="/images/checked.png" alt="미션" width={30} height={30} />
+          <div>미션</div>
+        </Link>
       </div>
       <div>
-        <Image
-          src="/images/competition.png"
-          alt="랭킹"
-          width={30}
-          height={30}
-        />
-        <div>랭킹</div>
+        <Link href="/ranking">
+          <Image
+            src="/images/competition.png"
+            alt="랭킹"
+            width={30}
+            height={30}
+          />
+          <div>랭킹</div>
+        </Link>
       </div>
       <div>
-        <Image
-          src="/images/group-users.png"
-          alt="커뮤니티"
-          width={30}
-          height={30}
-        />
-        <div>커뮤니티</div>
+        <Link href="/main">
+          <Image
+            src="/images/group-users.png"
+            alt="커뮤니티"
+            width={30}
+            height={30}
+          />
+          <div>커뮤니티</div>
+        </Link>
       </div>
     </FotoerContainer>
   );
@@ -46,14 +55,25 @@ const FotoerContainer = styled.div`
   justify-content: space-around;
   padding-top: 1.2rem;
 
+  a:visited,
+  a:link,
+  a:active {
+    color: black;
+    text-decoration: none;
+  }
+
   div {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  div > div {
-    font-size: 0.5rem;
+  div > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  div > a > div {
+    font-size: 0.7rem;
     font-weight: 300;
     margin-top: 0.5rem;
   }

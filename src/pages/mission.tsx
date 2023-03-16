@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import TodaysMission from "../components/mission/TodaysMission";
 import CompletedMission from "../components/mission/CompletedMission";
-import useMissionList from "../hooks/useMissionList";
+import useMission from "../hooks/useMission";
 import Link from "next/link";
-import axios from "axios";
 import { useEffect } from "react";
-
+import Footer from "../components/Footer";
 export default function Mission() {
-  const { randomMission, saveRandomMission } = useMissionList();
+  const { userMission, saveRandomMission } = useMission();
 
   useEffect(() => {}, []);
   //왜 자꾸 개체가 undefined라고 뜨는건지 잘 모르겟음.
@@ -24,7 +23,7 @@ export default function Mission() {
         <h1>
           이번 주 <b>미션</b>이에요
         </h1>
-        {randomMission.map((mission) =>
+        {userMission.map((mission) =>
           mission.status ? null : (
             <div key={mission.id}>
               <TodaysMission
@@ -39,7 +38,7 @@ export default function Mission() {
         )}
         <h1>완료</h1>
 
-        {randomMission.map((mission) =>
+        {userMission.map((mission) =>
           mission.status ? (
             <div key={mission.id}>
               <CompletedMission todo={mission.text} imgurl="/images/poo.png" />

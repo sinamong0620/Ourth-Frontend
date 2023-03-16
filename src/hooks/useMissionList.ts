@@ -1,25 +1,18 @@
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
-interface Random {
-  createDate: string;
-  id: number;
-  point: number;
-  status: boolean;
-  text: string;
-}
+
 interface RandomMission {
-  email: string;
   id: number;
-  point: number;
-  schoolName: string;
-  userMissions: Random[]; //Random과 Random[]차이가뭐임
+  email: string;
   username: string;
+  schoolName: string;
+  point: number;
+  missionPresence: true;
+  missionCount: 4; //Random과 Random[]차이가뭐임
 }
 
 const useMissionList = () => {
-  const [randomMission, setRandomMission] = useState<Random[]>([]);
-  const [userInfo, setuserInfo] = useState<RandomMission>();
-  let remainMission = [];
+  const [userInfo, setUserInfo] = useState<RandomMission>();
   const saveRandomMission = useCallback(async () => {
     const response = await axios.get<RandomMission>(
       `https://ourth.duckdns.org/user`,
@@ -31,20 +24,13 @@ const useMissionList = () => {
       }
     );
 
-    setRandomMission(response.data.userMissions);
-    setuserInfo(response.data);
+    setUserInfo(response.data);
   }, []);
-
-  for (let i of randomMission) {
-    if (i.status === false) {
-      remainMission.push(i);
-    }
-  }
 
   useEffect(() => {
     saveRandomMission();
   }, [saveRandomMission]);
 
-  return { randomMission, saveRandomMission, userInfo, remainMission };
+  return { userInfo, saveRandomMission };
 };
 export default useMissionList;

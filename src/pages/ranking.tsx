@@ -16,10 +16,6 @@ export default function Ranking() {
   return (
     <MainStyleContainer>
       <MainStyle>
-        <Link href="/main">
-          <div>{`< 메인으로`}</div>
-        </Link>
-        <Header />
         <h1>랭킹</h1>
 
         {anoterranking.map((school) => (

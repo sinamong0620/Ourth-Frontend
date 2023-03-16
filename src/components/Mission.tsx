@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
+interface IProps {
+  remainMission: number;
+}
 
-const Mission = () => {
-  const { remainMission } = useMissionList();
+const Days = [6, 5, 4, 3, 2, 1, "오늘까지"];
+const today = Days[new Date().getDay()];
 
+const Mission = (props: IProps) => {
   return (
     <MissionContainer>
       <div>미션</div>
@@ -14,11 +18,17 @@ const Mission = () => {
           <CurrentMissionClear>
             <div>이번 주 미션</div>
             <div>
-              <b>{remainMission.length}개</b> 남음
+              <b>{props.remainMission}개</b> 남음
             </div>
           </CurrentMissionClear>
         </EachIconContainer>
-        <ReaminDayCss>3일 남음</ReaminDayCss>
+        <ReaminDayCss>
+          {typeof today === "string" ? (
+            <div>{today}</div>
+          ) : (
+            <div>{today}일 남음 </div>
+          )}
+        </ReaminDayCss>
       </MissionIconContainer>
     </MissionContainer>
   );
@@ -64,7 +74,7 @@ const CurrentMissionClear = styled.div`
 `;
 
 const ReaminDayCss = styled.div`
-  width: 4rem;
+  width: 5rem;
   height: 2.3rem;
   background: #62a167;
   border-radius: 0.8rem;
