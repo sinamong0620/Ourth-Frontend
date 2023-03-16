@@ -49,7 +49,7 @@ const MainOurth = ({ Component }: AppProps) => {
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
       >
-        <Link href="/mission">
+        {/* <Link href="/mission">
           {!userInfo?.missionPresence ? (
             <button onClick={UserMission}>
               <AddMission />
@@ -57,7 +57,7 @@ const MainOurth = ({ Component }: AppProps) => {
           ) : (
             <Mission remainMission={userInfo.missionCount} />
           )}
-        </Link>
+        </Link> */}
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
