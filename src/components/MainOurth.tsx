@@ -49,7 +49,7 @@ const MainOurth = ({ Component }: AppProps) => {
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
       >
-        {/* <Link href="/mission">
+        <Link href="/mission">
           {!userInfo?.missionPresence ? (
             <button onClick={UserMission}>
               <AddMission />
@@ -57,7 +57,7 @@ const MainOurth = ({ Component }: AppProps) => {
           ) : (
             <Mission remainMission={userInfo.missionCount} />
           )}
-        </Link> */}
+        </Link>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -75,7 +75,7 @@ const MainOurth = ({ Component }: AppProps) => {
         transition={{ delay: 0.3 }}
       >
         <TipCommunityContain>
-          <Link
+          {/* <Link
             href={{
               pathname: "/tipdetail/1",
               query: {
@@ -83,14 +83,14 @@ const MainOurth = ({ Component }: AppProps) => {
                 img: "/images/recycling.jpg",
               },
             }}
-          >
-            <Tip
-              title="그건 재활용이 안돼요"
-              subtitle="아직도 재활용 방법을 모른다면? "
-              imgurl="/images/recycling.jpg"
-            />
-          </Link>
-          <Link
+          > */}
+          <Tip
+            title="그건 재활용이 안돼요"
+            subtitle="아직도 재활용 방법을 모른다면? "
+            imgurl="/images/recycling.jpg"
+          />
+          {/* </Link> */}
+          {/* <Link
             href={{
               pathname: "/tipdetail/2",
               query: {
@@ -98,14 +98,14 @@ const MainOurth = ({ Component }: AppProps) => {
                 img: "/images/cutevegi.jpg",
               },
             }}
-          >
-            <Tip
-              title="비건만 있는게 아니에요"
-              subtitle="채식주의에 대해서 알아봐요"
-              imgurl="/images/cutevegi.jpg"
-            />
-          </Link>
-          <Link
+          > */}
+          <Tip
+            title="비건만 있는게 아니에요"
+            subtitle="채식주의에 대해서 알아봐요"
+            imgurl="/images/cutevegi.jpg"
+          />
+          {/* </Link> */}
+          {/* <Link
             href={{
               pathname: "/tipdetail/3",
               query: {
@@ -113,13 +113,13 @@ const MainOurth = ({ Component }: AppProps) => {
                 img: "/images/factory.jpg",
               },
             }}
-          >
-            <Tip
-              title="기업을 없애요"
-              subtitle="공장을 안돌리면 돼요"
-              imgurl="/images/factory.jpg"
-            />
-          </Link>
+          > */}
+          <Tip
+            title="기업을 없애요"
+            subtitle="공장을 안돌리면 돼요"
+            imgurl="/images/factory.jpg"
+          />
+          {/* </Link> */}
         </TipCommunityContain>
       </TipCommunityScroll>
     </>
