@@ -9,7 +9,7 @@ export default function Test() {
   return (
     <MainStyleContainer>
       <MainStyle>
-        <Image src={img} width={1000} height={1000} />
+        {/* <Image src={img} width={1000} height={1000} /> */}
         <h1>{text}</h1>
         <p>
           <b>1. 부피 작은 건 재활용 안돼요!</b> 칫솔, 볼펜, 인공눈물, 고무장갑,
