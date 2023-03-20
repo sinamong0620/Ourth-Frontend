@@ -1,21 +1,18 @@
+import { FC, PropsWithChildren } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import styled from "styled-components";
-
 //레이아웃 컴포넌트는 공통으로 들어가게될 Header 컴포넌트가 있고
 //자식으로 오게될 { children } prop도 리턴해줍니다.
-type AppLayoutProps = {
-  children: React.ReactNode;
-};
 
-const Layout = ({ children }: AppLayoutProps) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <MainStyleContainer>
       <MainStyle>
         <Header />
         {children}
+        <Footer />
       </MainStyle>
-      <Footer />
     </MainStyleContainer>
   );
 };
