@@ -8,17 +8,19 @@ import { motion } from "framer-motion";
 import useMissionList from "../hooks/useMissionList";
 import AddMission from "./AddMission";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { FC } from "react";
+import { useAtom } from "jotai";
+import { refreshIntervalAtom } from "../store/intervals";
 
-type AppProps = {
-  Component: React.ElementType;
-};
-
-const MainOurth = ({ Component }: AppProps) => {
+const Page: FC = () => {
+  const router = useRouter();
   const { userInfo } = useMissionList();
+  const [refreshInterval, _] = useAtom(refreshIntervalAtom);
 
-  const UserMission = async () => {
+  const userMission = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://ourth.duckdns.org/usermission/add",
         {}, //post는 형식이 {data,{config}} 이렇게 해야함
         {
@@ -27,13 +29,36 @@ const MainOurth = ({ Component }: AppProps) => {
           },
         }
       );
+      router.push("/mission");
     } catch (error) {
       alert(error);
     }
   };
+
+  const logout = async () => {
+    try {
+      await axios.post(
+        "https://ourth.duckdns.org/logout",
+        { refreshToken: `${localStorage.getItem("refreshKey")}` }, //post는 형식이 {data,{config}} 이렇게 해야함
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
+          },
+        }
+      );
+      window.localStorage.removeItem("tokenKey");
+      window.localStorage.removeItem("refreshKey");
+
+      clearInterval(refreshInterval!);
+      router.push("/login");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <>
-      <div>로그아웃</div>
+      <button onClick={logout}>로그아웃</button>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
@@ -49,15 +74,15 @@ const MainOurth = ({ Component }: AppProps) => {
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
       >
-        <Link href="/mission">
-          {!userInfo?.missionPresence ? (
-            <button onClick={UserMission}>
-              <AddMission />
-            </button>
-          ) : (
+        {!userInfo?.missionPresence ? (
+          <UnsetButton onClick={userMission}>
+            <AddMission />
+          </UnsetButton>
+        ) : (
+          <Link href="/mission">
             <Mission remainMission={userInfo.missionCount} />
-          )}
-        </Link>
+          </Link>
+        )}
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -76,14 +101,14 @@ const MainOurth = ({ Component }: AppProps) => {
       >
         <TipCommunityContain>
           {/* <Link
-            href={{
-              pathname: "/tipdetail/1",
-              query: {
-                text: "그건 재활용이 안돼요",
-                img: "/images/recycling.jpg",
-              },
-            }}
-          > */}
+        href={{
+          pathname: "/tipdetail/1",
+          query: {
+            text: "그건 재활용이 안돼요",
+            img: "/images/recycling.jpg",
+          },
+        }}
+      > */}
           <Tip
             title="그건 재활용이 안돼요"
             subtitle="아직도 재활용 방법을 모른다면? "
@@ -91,14 +116,14 @@ const MainOurth = ({ Component }: AppProps) => {
           />
           {/* </Link> */}
           {/* <Link
-            href={{
-              pathname: "/tipdetail/2",
-              query: {
-                text: "비건만 있는게 아니에요",
-                img: "/images/cutevegi.jpg",
-              },
-            }}
-          > */}
+        href={{
+          pathname: "/tipdetail/2",
+          query: {
+            text: "비건만 있는게 아니에요",
+            img: "/images/cutevegi.jpg",
+          },
+        }}
+      > */}
           <Tip
             title="비건만 있는게 아니에요"
             subtitle="채식주의에 대해서 알아봐요"
@@ -106,14 +131,14 @@ const MainOurth = ({ Component }: AppProps) => {
           />
           {/* </Link> */}
           {/* <Link
-            href={{
-              pathname: "/tipdetail/3",
-              query: {
-                text: "공장을 없애요",
-                img: "/images/factory.jpg",
-              },
-            }}
-          > */}
+        href={{
+          pathname: "/tipdetail/3",
+          query: {
+            text: "공장을 없애요",
+            img: "/images/factory.jpg",
+          },
+        }}
+      > */}
           <Tip
             title="기업을 없애요"
             subtitle="공장을 안돌리면 돼요"
@@ -126,7 +151,7 @@ const MainOurth = ({ Component }: AppProps) => {
   );
 };
 
-export default MainOurth;
+export default Page;
 
 const TipCommunityContain = styled.div`
   display: flex;
@@ -138,4 +163,10 @@ const TipCommunityScroll = styled(motion.div)`
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const UnsetButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  width: 100%;
 `;

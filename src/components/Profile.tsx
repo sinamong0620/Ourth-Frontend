@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
 import useMissionList from "../hooks/useMissionList";
-interface IProps {
+
+interface Props {
   username: string;
   userpoint: number;
 }
-const Profile = (props: IProps) => {
+
+const Profile = (props: Props) => {
   return (
     <MissionContainer>
       <DisplayFlex>
@@ -19,7 +21,9 @@ const Profile = (props: IProps) => {
     </MissionContainer>
   );
 };
+
 export default Profile;
+
 const MissionContainer = styled.div`
   background: white;
   height: 6.25rem;

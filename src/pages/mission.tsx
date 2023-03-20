@@ -4,13 +4,9 @@ import CompletedMission from "../components/mission/CompletedMission";
 import useMission from "../hooks/useMission";
 import Link from "next/link";
 import { useEffect } from "react";
+
 export default function Mission() {
   const { userMission, saveRandomMission } = useMission();
-
-  useEffect(() => {}, []);
-  //왜 자꾸 개체가 undefined라고 뜨는건지 잘 모르겟음.
-  //그리고 왜 map 업다고 함. ㅅㅂ 장난?
-  //뭐야 왜 여기서 하면 갑자기 map이 됨?
 
   return (
     <MainStyleContainer>

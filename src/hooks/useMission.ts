@@ -8,14 +8,17 @@ interface Mission {
   point: number;
   status: boolean;
 }
-interface IProps {
+
+interface MissionResponse {
   currentBadge: boolean;
   userMissions: Mission[];
 }
+
 const useMission = () => {
   const [userMission, setuserMission] = useState<Mission[]>([]);
+
   const saveRandomMission = useCallback(async () => {
-    const response = await axios.get<IProps>(
+    const response = await axios.get<MissionResponse>(
       `https://ourth.duckdns.org/mission`,
       {
         headers: {
