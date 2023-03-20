@@ -1,19 +1,27 @@
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
-import Router from "next/router";
+
 import Link from "next/link";
+import refreshInterval from "../utils/auth/refreshInterval";
+import { useRouter } from "next/router";
+import { useAtom } from "jotai";
+import { refreshIntervalAtom } from "../store/intervals";
 
 const LoginInput = () => {
+  const router = useRouter();
   const [loginId, setLoginId] = useState("");
   const [loginPassword, setPassWord] = useState("");
+  const [_, setRefreshInterval] = useAtom(refreshIntervalAtom);
 
   const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginId(e.target.value);
   };
+
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassWord(e.target.value);
   };
+
   const onSubmitForm = async () => {
     try {
       const response = await axios.post("https://ourth.duckdns.org/login", {
@@ -24,43 +32,17 @@ const LoginInput = () => {
       localStorage.setItem("tokenKey", response.data.accessToken);
       localStorage.setItem("refreshKey", response.data.refreshToken);
 
-      Router.push({
+      router.push({
         pathname: "/main",
       });
 
-      setInterval(onSilentRefresh, 1740000);
+      const interval = setInterval(() => refreshInterval(router), 5000);
+      setRefreshInterval(interval);
     } catch (error) {
       alert(error);
     }
   };
 
-  const onSilentRefresh = async () => {
-    try {
-      const response = await axios.post(
-        "https://ourth.duckdns.org/refresh",
-        { refreshToken: localStorage.getItem("refreshKey") },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
-          },
-          withCredentials: true,
-        }
-      );
-
-      localStorage.setItem("tokenKey", response.data.accessToken);
-      localStorage.setItem("refreshKey", response.data.refreshToken);
-
-      // Router.push({
-      //   pathname: "/main",
-      // });
-
-      setInterval(onSilentRefresh, 1740000);
-    } catch (error) {
-      Router.push({
-        pathname: "/login",
-      });
-    }
-  };
   return (
     <LoginForm>
       <form>
