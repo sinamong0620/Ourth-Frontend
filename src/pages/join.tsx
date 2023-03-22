@@ -1,17 +1,24 @@
 import axios from "axios";
 import Router from "next/router";
-import { useState } from "react";
-import { ChangeEvent, MouseEventHandler } from "react";
+import { useCallback, useState } from "react";
+import { ChangeEvent } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
 export default function Join() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [checkpassword, setCheckpassword] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [username, setUsername] = useState("");
-  const [passwordTrue, setpasswordTrue] = useState<boolean>(false);
+  //회원가입 input 상태 저장 변수
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [checkpassword, setCheckpassword] = useState<string>("");
+  const [schoolName, setSchoolName] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+
+  //회원가입 유효성 검사 변수
+  const [isEmail, setIsEmail] = useState<boolean>(false);
+  const [isPassword, setIsPassword] = useState<boolean>(false);
+  const [isPasswordTrue, setIsPasswordTrue] = useState<boolean>(false);
+  const [isSchoolName, setIsScholName] = useState<boolean>(false);
+  const [isUserName, setIsUserName] = useState<boolean>(false);
 
   const onSubmitForm = async () => {
     try {
@@ -26,39 +33,59 @@ export default function Join() {
       Router.push({
         pathname: "/login",
       });
-    } catch (error) {
-      alert(error);
-    }
+    } catch (error) {}
   };
 
-  const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //input 함수들 onChange 만들기
+  //useCallback을 사용하여 불필요한 rendering이 일어나지 않도록 방지한다.
+  //두번째 인자에는 의존성 배열인데 의존하는 변수를 배열에 담아놓으면 그 값이 변경되기 전까진
+  //그전에 사용하던 값을 계속 사용하기 때문에 불필요한 rendering을 줄일 수 있다.
+  const onEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
-  };
-  const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    console.log(e.target.value);
-  };
-  const onPassWordCheckChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCheckpassword(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const onMounsDownEvent = () => {
-    if (password !== checkpassword) {
-      setpasswordTrue(true);
+    if (e.target.value !== "") {
+      setIsEmail(false);
     } else {
-      setpasswordTrue(false);
+      //input에 쓴 값이 아무것도 없다.
+      setIsEmail(true);
     }
-  };
-  const onSchoolNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //err : 이메일이 입력되지 않았습니다.
+  }, []);
+  const onPasswordChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+    if (e.target.value.length >= 8) {
+      setIsPassword(false);
+    } else {
+      setIsPassword(true);
+    }
+  }, []);
+  const onPassWordCheckChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setCheckpassword(e.target.value);
+      if (password === e.target.value) {
+        setIsPasswordTrue(false);
+      } else {
+        setIsPasswordTrue(true);
+      }
+    },
+    [password]
+  );
+  const onSchoolNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSchoolName(e.target.value);
-    console.log(e.target.value);
-  };
-  const onUserNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value !== "") {
+      setIsScholName(false);
+    } else {
+      setIsScholName(true);
+    }
+  }, []);
+  const onUserNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
-    console.log(e.target.value);
-  };
+    if (e.target.value !== "") {
+      setIsUserName(false);
+    } else {
+      setIsUserName(true);
+    }
+  }, []);
+
   return (
     <MainStyleContainer>
       <MainStyle>
@@ -70,8 +97,10 @@ export default function Join() {
               type="text"
               value={email}
               onChange={onEmailChange}
+              onBlur={onEmailChange}
               placeholder="이메일"
             />
+            {isEmail && <NotPassWord>이메일을 적어주세요</NotPassWord>}
           </LabelInputContainer>
           <LabelInputContainer>
             <LoginLabel>비밀번호</LoginLabel>
@@ -79,22 +108,25 @@ export default function Join() {
               type="password"
               value={password}
               onChange={onPasswordChange}
+              onBlur={onPasswordChange}
               placeholder="비밀번호"
             />
+            {isPassword && (
+              <NotPassWord>비밀번호를 8자 이상 작성해주세요</NotPassWord>
+            )}
           </LabelInputContainer>
+
           <LabelInputContainer>
             <LoginLabel>비밀번호 확인</LoginLabel>
             <input
               type="password"
               value={checkpassword}
               onChange={onPassWordCheckChange}
-              onBlur={onMounsDownEvent}
+              onBlur={onPassWordCheckChange}
               placeholder="비밀번호 확인"
             />
-            {passwordTrue ? (
+            {isPasswordTrue && (
               <NotPassWord>비밀번호가 맞지 않습니다</NotPassWord>
-            ) : (
-              <div></div>
             )}
           </LabelInputContainer>
           <LabelInputContainer>
@@ -103,21 +135,38 @@ export default function Join() {
               type="text"
               value={schoolName}
               onChange={onSchoolNameChange}
+              onBlur={onSchoolNameChange}
               placeholder="학교"
             />
+            {isSchoolName && <NotPassWord>학교를 적어주세요</NotPassWord>}
           </LabelInputContainer>
-
           <LabelInputContainer>
             <LoginLabel>이름</LoginLabel>
             <input
               type="text"
               value={username}
               onChange={onUserNameChange}
+              onBlur={onUserNameChange}
               placeholder="이름"
             />
+            {isUserName && <NotPassWord>이름을 적어주세요</NotPassWord>}
           </LabelInputContainer>
         </form>
-        <button onClick={onSubmitForm}>회원가입</button>
+
+        <button
+          disabled={
+            !(
+              !isUserName &&
+              !isPassword &&
+              !isPasswordTrue &&
+              !isSchoolName &&
+              !isEmail
+            )
+          }
+          onClick={onSubmitForm}
+        >
+          회원가입
+        </button>
       </MainStyle>
     </MainStyleContainer>
   );
@@ -157,6 +206,7 @@ const MainStyle = styled.div`
     width: 100%;
     height: 4rem;
     border-radius: 1.4rem;
+    cursor: pointer;
   }
 `;
 
