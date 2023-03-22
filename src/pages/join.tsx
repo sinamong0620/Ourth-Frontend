@@ -42,7 +42,9 @@ export default function Join() {
   //그전에 사용하던 값을 계속 사용하기 때문에 불필요한 rendering을 줄일 수 있다.
   const onEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    if (e.target.value !== "") {
+    var regExp =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if (e.target.value !== "" && regExp.test(e.target.value)) {
       setIsEmail(false);
     } else {
       //input에 쓴 값이 아무것도 없다.
@@ -61,7 +63,7 @@ export default function Join() {
   const onPassWordCheckChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setCheckpassword(e.target.value);
-      if (password === e.target.value) {
+      if (password === e.target.value && e.target.value.length > 0) {
         setIsPasswordTrue(false);
       } else {
         setIsPasswordTrue(true);
@@ -155,13 +157,16 @@ export default function Join() {
 
         <button
           disabled={
-            !(
-              !isUserName &&
-              !isPassword &&
-              !isPasswordTrue &&
-              !isSchoolName &&
-              !isEmail
-            )
+            (isUserName &&
+              isPassword &&
+              isPasswordTrue &&
+              isSchoolName &&
+              isEmail) ||
+            email.length === 0 ||
+            password.length === 0 ||
+            checkpassword.length === 0 ||
+            schoolName.length === 0 ||
+            username.length === 0
           }
           onClick={onSubmitForm}
         >
