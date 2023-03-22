@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
-
 import Link from "next/link";
 import refreshInterval from "../utils/auth/refreshInterval";
 import { useRouter } from "next/router";
@@ -29,17 +28,23 @@ const LoginInput = () => {
         password: loginPassword,
       });
 
-      localStorage.setItem("tokenKey", response.data.accessToken);
-      localStorage.setItem("refreshKey", response.data.refreshToken);
+      localStorage.setItem("tokenKey", response.data.data.accessToken);
+      localStorage.setItem("refreshKey", response.data.data.drefreshToken);
 
       router.push({
         pathname: "/main",
       });
 
-      const interval = setInterval(() => refreshInterval(router), 5000);
+      const interval = setInterval(() => refreshInterval(router), 1740000);
       setRefreshInterval(interval);
     } catch (error) {
-      alert(error);
+      //typescript에서는 error가 unknown으로 떠서 이렇게 처리를 해주어야 한다.
+      if (axios.isAxiosError(error)) {
+        alert(error.response?.data.message);
+        // Do something with this error...
+      } else {
+        alert(error);
+      }
     }
   };
 
@@ -82,6 +87,7 @@ const LoginForm = styled.div`
     background: #62a167;
     color: white;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
   form {
     display: flex;
