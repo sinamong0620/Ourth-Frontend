@@ -1,13 +1,28 @@
 import Link from "next/link";
+import { Router } from "react-router";
 import styled from "styled-components";
-import Image from "next/image";
-import { motion, useScroll } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const loginRouterPush = () => {
+    router.push("/login");
+  };
+  const JoinRouterPush = () => {
+    router.push("/join");
+  };
   return (
     <MainStyleContainer>
-      <h1>지구의 남은</h1>
-      <h1>수명은 얼마일까요?</h1>
+      <MainStyle>
+        <div>
+          <h1>지구의 남은</h1>
+          <h1>수명은 얼마일까요?</h1>
+        </div>
+        <div>
+          <button onClick={loginRouterPush}>로그인하기</button>
+          <button onClick={JoinRouterPush}>회원가입하기</button>
+        </div>
+      </MainStyle>
     </MainStyleContainer>
   );
 }
@@ -15,30 +30,22 @@ export default function Home() {
 const MainStyleContainer = styled.div`
   max-width: 480px;
   margin: 0 auto;
-`;
-const MainStyle = styled(motion.div)`
-  background-color: black;
-  max-width: 480px;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  padding: 5rem 0 10rem 0;
+`;
+const MainStyle = styled.div`
+  width: 100%;
 
-  button {
-    height: 3rem;
-    border-radius: 1.3rem;
-    border: none;
-    font-size: 0.9rem;
-    width: 100%;
-    background: #62a167;
-    color: white;
-    margin-bottom: 1rem;
-  }
-  a:visited,
-  a:link,
-  a:active {
-    color: black;
-    text-decoration: none;
-  }
+  div:last-child {
+    display: flex;
+    flex-direction: column;
 
-  h1 {
-    color: white;
+    button {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      width: 100%;
+    }
   }
 `;

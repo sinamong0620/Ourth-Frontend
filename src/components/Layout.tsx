@@ -11,8 +11,8 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <MainStyle>
         <Header />
         {children}
-        <Footer />
       </MainStyle>
+      <Footer />
     </MainStyleContainer>
   );
 };
@@ -22,6 +22,7 @@ const MainStyleContainer = styled.div`
   max-width: 480px;
   margin: 0 auto;
   text-align: left;
+  background: #f6f6f6;
 `;
 const MainStyle = styled.div`
   background-color: #f6f6f6;

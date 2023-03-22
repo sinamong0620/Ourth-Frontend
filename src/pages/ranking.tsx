@@ -1,9 +1,8 @@
 import useRankingList from "../hooks/useRankingList";
 import styled from "styled-components";
-import Header from "../components/Header";
+import { ReactElement } from "react";
+import Layout from "../components/Layout";
 import EachRanking from "../components/ranking/EachRanking";
-import useMissionList from "../hooks/useMissionList";
-import Link from "next/link";
 
 export default function Ranking() {
   const { anoterranking, mySchoolRanking } = useRankingList();
@@ -44,6 +43,11 @@ export default function Ranking() {
     </MainStyleContainer>
   );
 }
+
+//getLayout 할 때 컴포넌트 내부에서 하면 안됨. 그러면 layout 적용안됨.
+Ranking.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
 
 const MainStyleContainer = styled.div`
   max-width: 30rem;

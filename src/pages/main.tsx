@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
 import MainOurth from "../components/MainOurth";
+import { ReactElement } from "react";
 import Layout from "../components/Layout";
 
 export default function Main() {

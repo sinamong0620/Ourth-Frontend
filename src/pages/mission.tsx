@@ -3,17 +3,14 @@ import TodaysMission from "../components/mission/TodaysMission";
 import CompletedMission from "../components/mission/CompletedMission";
 import useMission from "../hooks/useMission";
 import Link from "next/link";
-import { useEffect } from "react";
+import { ReactElement } from "react";
+import Layout from "../components/Layout";
 
 export default function Mission() {
   const { userMission, saveRandomMission } = useMission();
 
   return (
     <MainStyleContainer>
-      <Link href="/main">
-        <div>{`< 메인으로`}</div>
-      </Link>
-
       <div>
         <h1>
           이번 주 <b>미션</b>이에요
@@ -44,6 +41,9 @@ export default function Mission() {
     </MainStyleContainer>
   );
 }
+Mission.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
 
 const MainStyleContainer = styled.div`
   max-width: 480px;
@@ -60,6 +60,6 @@ const MainStyleContainer = styled.div`
 
   h1 {
     font-weight: 100;
-    padding: 6rem 0 0.5rem 0;
+    padding: 3rem 0 0.5rem 0;
   }
 `;

@@ -28,7 +28,6 @@ const MissionContainer = styled.div`
   cursor: pointer;
   border-radius: 1.8rem;
   width: 23rem;
-  height: 100%;
 
   div:first-child {
     width: 23rem;
