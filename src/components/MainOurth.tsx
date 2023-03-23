@@ -9,14 +9,14 @@ import useMissionList from "../hooks/useMissionList";
 import AddMission from "./AddMission";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { FC } from "react";
-import { useAtom } from "jotai";
-import { refreshIntervalAtom } from "../store/intervals";
+import { FC, useState } from "react";
+
+import MenuModal from "./MenuModal";
 
 const Page: FC = () => {
   const router = useRouter();
   const { userInfo } = useMissionList();
-  const [refreshInterval, _] = useAtom(refreshIntervalAtom);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const userMission = async () => {
     try {
@@ -35,30 +35,10 @@ const Page: FC = () => {
     }
   };
 
-  const logout = async () => {
-    try {
-      await axios.post(
-        "https://ourth.duckdns.org/logout",
-        { refreshToken: `${localStorage.getItem("refreshKey")}` }, //post는 형식이 {data,{config}} 이렇게 해야함
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
-          },
-        }
-      );
-      window.localStorage.removeItem("tokenKey");
-      window.localStorage.removeItem("refreshKey");
-
-      clearInterval(refreshInterval!);
-      router.push("/login");
-    } catch (error) {
-      alert(error);
-    }
-  };
-
   return (
     <>
-      <button onClick={logout}>로그아웃</button>
+      {/* <button onClick={logout}>로그아웃</button> */}
+
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
@@ -147,6 +127,7 @@ const Page: FC = () => {
           {/* </Link> */}
         </TipCommunityContain>
       </TipCommunityScroll>
+      {true && <MenuModal />}
     </>
   );
 };
