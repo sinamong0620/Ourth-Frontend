@@ -11,8 +11,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 
-import MenuModal from "./MenuModal";
-
 const Page: FC = () => {
   const router = useRouter();
   const { userInfo } = useMissionList();
@@ -129,7 +127,6 @@ const Page: FC = () => {
           {/* </Link> */}
         </TipCommunityContain>
       </TipCommunityScroll>
-      {true && <MenuModal />}
     </>
   );
 };

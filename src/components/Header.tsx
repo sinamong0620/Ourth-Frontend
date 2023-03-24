@@ -1,11 +1,22 @@
 import styled from "styled-components";
 import Image from "next/image";
-
-const Header = () => {
+import { Dispatch, SetStateAction } from "react";
+interface Props {
+  setModalShow: Dispatch<SetStateAction<boolean>>;
+}
+const Header = (props: Props) => {
+  const showModal = () => {
+    props.setModalShow(true);
+  };
   return (
     <HeaderContainer>
-      <Image src="/images/pngegg.png" alt="사진임" width={60} height={60} />
-      <div>OURTH</div>
+      <LogoContainer>
+        <Image src="/images/pngegg.png" alt="사진임" width={60} height={60} />
+        <span>OURTH</span>
+      </LogoContainer>
+      <div onClick={showModal}>
+        <Image src="/images/menu.png" width={30} height={30} alt="메뉴바" />
+      </div>
     </HeaderContainer>
   );
 };
@@ -16,11 +27,19 @@ const HeaderContainer = styled.header`
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   background-color: #f6f6f6;
+  div:last-child {
+    cursor: pointer;
+  }
+`;
 
-  div {
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  span {
     font-size: 1.9rem;
   }
 `;

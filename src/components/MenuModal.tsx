@@ -3,9 +3,15 @@ import styled from "styled-components";
 import { useAtom } from "jotai";
 import { refreshIntervalAtom } from "../store/intervals";
 import router from "next/router";
-
-const Modal = () => {
+import { Dispatch, SetStateAction } from "react";
+interface Props {
+  setModalShow: Dispatch<SetStateAction<boolean>>;
+}
+const Modal = (props: Props) => {
   const [refreshInterval, _] = useAtom(refreshIntervalAtom);
+  const closeModal = () => {
+    props.setModalShow(false);
+  };
   const logout = async () => {
     try {
       await axios.post(
@@ -33,6 +39,7 @@ const Modal = () => {
   return (
     <ModalBackground>
       <ModalContainer>
+        <CloseButton onClick={closeModal}>x</CloseButton>
         <button onClick={logout}>로그아웃</button>
         <button onClick={achievement}>나의 업적</button>
       </ModalContainer>
@@ -74,4 +81,21 @@ const ModalBackground = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const CloseButton = styled.div`
+  width: 2rem;
+  height: 2rem;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0.2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  cursor: pointer;
 `;
