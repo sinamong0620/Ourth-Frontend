@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const router = useRouter();
@@ -13,14 +13,24 @@ export default function Home() {
   return (
     <MainStyleContainer>
       <MainStyle>
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 10 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <h1>지구의 남은</h1>
           <h1>수명은 얼마일까요?</h1>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 10 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <button onClick={loginRouterPush}>로그인</button>
           <button onClick={JoinRouterPush}>회원가입</button>
-        </div>
+        </motion.div>
       </MainStyle>
     </MainStyleContainer>
   );

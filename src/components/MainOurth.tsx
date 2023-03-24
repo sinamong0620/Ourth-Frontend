@@ -37,12 +37,11 @@ const Page: FC = () => {
 
   return (
     <>
-      {/* <button onClick={logout}>로그아웃</button> */}
-
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
       >
         <Profile
           username={userInfo?.username as string}
@@ -53,6 +52,7 @@ const Page: FC = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
       >
         {!userInfo?.missionPresence ? (
           <UnsetButton onClick={userMission}>
@@ -68,6 +68,7 @@ const Page: FC = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
       >
         <Link href="/ranking">
           <Ranking schoolName={userInfo?.schoolName as string} />
@@ -78,6 +79,7 @@ const Page: FC = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 10 }}
         transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
       >
         <TipCommunityContain>
           {/* <Link
