@@ -41,7 +41,13 @@ const Modal = (props: Props) => {
       <ModalContainer>
         <CloseButton onClick={closeModal}>x</CloseButton>
         <button onClick={logout}>로그아웃</button>
-        <button onClick={achievement}>나의 업적</button>
+        <button
+          onClick={() => {
+            achievement(), closeModal();
+          }}
+        >
+          나의 업적
+        </button>
       </ModalContainer>
     </ModalBackground>
   );
