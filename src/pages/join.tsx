@@ -1,9 +1,10 @@
 import axios from "axios";
 import Router from "next/router";
-import { useCallback, useState } from "react";
+import { ChangeEventHandler, useCallback, useState } from "react";
 import { ChangeEvent } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import { universityName } from "../constants/schoolName";
 
 export default function Join() {
   //회원가입 input 상태 저장 변수
@@ -71,14 +72,17 @@ export default function Join() {
     },
     [password]
   );
-  const onSchoolNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSchoolName(e.target.value);
-    if (e.target.value !== "") {
-      setIsScholName(false);
-    } else {
-      setIsScholName(true);
-    }
-  }, []);
+  const onSchoolNameChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setSchoolName(event.target.value);
+      if (event.target.value !== "") {
+        setIsScholName(false);
+      } else {
+        setIsScholName(true);
+      }
+    },
+    []
+  );
   const onUserNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
     if (e.target.value !== "") {
@@ -133,13 +137,21 @@ export default function Join() {
           </LabelInputContainer>
           <LabelInputContainer>
             <LoginLabel>학교</LoginLabel>
-            <input
+            {/* <input
               type="text"
               value={schoolName}
               onChange={onSchoolNameChange}
               onBlur={onSchoolNameChange}
               placeholder="학교"
-            />
+            /> */}
+            <select onChange={onSchoolNameChange}>
+              {universityName.map((name: string) => (
+                //value값을 이용해서 onChangeScholl에서 name을 useState에 저장할 수 있게함
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
             {isSchoolName && <NotPassWord>학교를 적어주세요</NotPassWord>}
           </LabelInputContainer>
           <LabelInputContainer>
@@ -224,6 +236,19 @@ const LoginLabel = styled.div`
 
 const LabelInputContainer = styled.div`
   margin-bottom: 2rem; //이거는 input을 감싸는 div 속성에 넣자
+  select {
+    width: 100%;
+    border: 0.01rem solid lightgray;
+    height: 4rem;
+    border-radius: 1.3rem;
+    padding: 1.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("/images/down.png") no-repeat 95%;
+    background-size: 1rem 1rem;
+}
+  }
 `;
 
 const NotPassWord = styled.div`
