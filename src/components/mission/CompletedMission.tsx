@@ -4,6 +4,7 @@ import Image from "next/image";
 interface IProps {
   todo: string;
   imgurl: string;
+  point: number;
 }
 const CompletedMission = (props: IProps) => {
   return (
@@ -13,7 +14,7 @@ const CompletedMission = (props: IProps) => {
           <Image src="/images/poo.png" width={50} height={50} alt="체크" />
           <TodaysMissionText>
             <div>{props.todo}</div>
-            <div>똥 좀 덜 쌉니다</div>
+            <div>미션 완료</div>
           </TodaysMissionText>
         </div>
       </TodayMissionComponent>
