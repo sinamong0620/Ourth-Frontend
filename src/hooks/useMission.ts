@@ -16,10 +16,11 @@ interface MissionResponse {
 
 const useMission = () => {
   const [userMission, setuserMission] = useState<Mission[]>([]);
+  const [missionArray, setMissionArray] = useState<boolean[]>([]);
 
   const saveRandomMission = useCallback(async () => {
     const response = await axios.get<MissionResponse>(
-      `https://ourth.duckdns.org/mission`,
+      `https://ourth.duckdns.org/user/mission`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokenKey")}`,
@@ -27,14 +28,20 @@ const useMission = () => {
         withCredentials: true,
       }
     );
+    const currentBadge = response.data.currentBadge;
+    const m1 = response.data.userMissions[0].status;
+    const m2 = response.data.userMissions[1].status;
+    const m3 = response.data.userMissions[2].status;
+    const m4 = response.data.userMissions[3].status;
+    setMissionArray([currentBadge, m1, m2, m3, m4]);
 
     setuserMission(response.data.userMissions);
   }, []);
 
   useEffect(() => {
     saveRandomMission();
-  }, [saveRandomMission]);
+  }, []);
 
-  return { userMission, saveRandomMission };
+  return { userMission, saveRandomMission, missionArray };
 };
 export default useMission;
