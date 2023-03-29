@@ -2,15 +2,13 @@ import styled from "styled-components";
 import TodaysMission from "../components/mission/TodaysMission";
 import CompletedMission from "../components/mission/CompletedMission";
 import useMission from "../hooks/useMission";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
-import Modal from "../components/mission/Modal";
 
 export default function Mission() {
   const { userMission, saveRandomMission, missionArray } = useMission();
-  //모달 useState 설정
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
   const MissionCount = missionArray.filter((x) => x === true);
   const imgArray = [
     "/images/poo.png",
@@ -18,16 +16,6 @@ export default function Mission() {
     "/images/sunglasses.png",
     "/images/hearteye.png",
   ];
-  const [position, setPosition] = useState(0);
-  function onScroll() {
-    setPosition(window.scrollY);
-  }
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
 
   const onClickAddBadge = async () => {
     try {
@@ -66,12 +54,11 @@ export default function Mission() {
             mission.status ? null : (
               <div key={mission.id}>
                 <TodaysMission
+                  onSuccess={saveRandomMission}
                   id={mission.id}
                   todo={mission.text}
-                  imgurl={imgArray[mission.id - 1]}
+                  imgurl={imgArray[1]}
                   point={mission.point}
-                  saveRandomMission={saveRandomMission}
-                  setModalOpen={setModalOpen}
                 />
               </div>
             )
@@ -91,8 +78,6 @@ export default function Mission() {
           )}
         </div>
       )}
-
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
     </MainStyleContainer>
   );
 }

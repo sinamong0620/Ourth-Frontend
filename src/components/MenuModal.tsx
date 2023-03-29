@@ -54,6 +54,18 @@ const Modal = (props: Props) => {
 };
 export default Modal;
 
+const ModalBackground = styled.div`
+  background-color: rgba(139, 139, 139, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+`;
 const ModalContainer = styled.div`
   width: 85%;
   height: 30%;
@@ -76,17 +88,6 @@ const ModalContainer = styled.div`
     color: white;
     cursor: pointer;
   }
-`;
-const ModalBackground = styled.div`
-  background-color: rgba(139, 139, 139, 0.5);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const CloseButton = styled.div`
