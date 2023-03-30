@@ -29,7 +29,7 @@ const Footer = () => {
         </Link>
       </div>
       <div>
-        <Link href="/main">
+        <Link href="/chatgpt">
           <Image src="/images/pngegg.png" alt="Ourth" width={30} height={30} />
           <div>Ourth</div>
         </Link>
