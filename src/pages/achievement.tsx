@@ -6,7 +6,7 @@ import useCompletedMission from "../hooks/useCompletedMission";
 
 export default function Achievement() {
   const { userMission, userInfo } = useCompletedMission();
-  console.log(userMission);
+
   return (
     <MyRankingContainer>
       <h1>My Info</h1>
@@ -38,7 +38,9 @@ export default function Achievement() {
         {userMission.map((mission) => {
           return (
             <EachCompletedMission key={mission.id}>
-              <h1>{mission.id}</h1>
+              <h1>{`0${new Date(mission.createDate).getMonth() + 1}-${new Date(
+                mission.createDate
+              ).getDate()}`}</h1>
               <div>
                 <div>{mission.text}</div>
                 <div>{mission.point}pt</div>
@@ -58,7 +60,6 @@ const MyRankingContainer = styled.div`
   > h1 {
     margin: 2rem 0rem 1rem 0rem;
   }
-  height: 100vh;
 `;
 const MyProfileContainer = styled.div`
   background: white;
@@ -112,8 +113,12 @@ const EachCompletedMission = styled.div`
     padding: 1.5rem 1.8rem;
     border-radius: 1.8rem;
     margin-bottom: 1.2rem;
+    align-items: center;
+    
     h1{
       margin-right : 1.5rem;
+      white-space: nowrap;
+      font-size: 1.2rem;
     }
     div div:first-child {
       font-size : 1.2rem;
