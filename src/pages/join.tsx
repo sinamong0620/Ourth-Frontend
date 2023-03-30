@@ -184,7 +184,7 @@ export default function Join() {
           }
           onClick={onSubmitForm}
         >
-          회원가입
+          Sign up
         </button>
       </MainStyle>
     </MainStyleContainer>
