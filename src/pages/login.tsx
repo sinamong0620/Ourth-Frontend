@@ -15,7 +15,7 @@ export default function Login() {
 const LoginScreen = styled.div`
   max-width: 480px;
   margin: 0 auto;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 7rem 1.5rem 1.5rem 1.5rem;
   height: 100vh;
   display: flex;
   flex-direction: column;

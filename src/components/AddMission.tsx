@@ -4,14 +4,14 @@ import Image from "next/image";
 const AddMission = () => {
   return (
     <MissionContainer>
-      <div>미션</div>
+      <div>Mission</div>
       <MissionIconContainer>
         <EachIconContainer>
           <Image src="/images/fire.png" width={60} height={60} alt="체크" />
           <CurrentMissionClear>
-            <div>지구 지키러 가기</div>
+            <div>Lets go protect the Ourth!</div>
             <div>
-              <b>미션 받기</b>
+              <b>Get a mission</b>
             </div>
           </CurrentMissionClear>
         </EachIconContainer>
@@ -26,7 +26,7 @@ const MissionContainer = styled.div`
   height: 10.5rem;
   border-radius: 1.8rem;
   margin: 0 auto;
-  padding: 1.4rem 3rem 0rem 2rem;
+  padding: 1.4rem;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1.4rem;
@@ -52,7 +52,7 @@ const EachIconContainer = styled.div`
 const CurrentMissionClear = styled.div`
   font-weight: 200;
   div:first-child {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   div:last-child {

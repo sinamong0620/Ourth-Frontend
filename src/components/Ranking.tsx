@@ -10,10 +10,10 @@ const Ranking = (props: IProps) => {
   return (
     <MissionContainer>
       <MissionTextContain>
-        <div>랭킹</div>
+        <div>Ranking</div>
         <div>
           <div>{props.schoolName}</div>
-          <div>{mySchoolRanking[0]?.ranking}위</div>
+          <div>{mySchoolRanking[0]?.ranking}st</div>
         </div>
       </MissionTextContain>
       <Image src="/images/ranking.png" alt="키보드" width={165} height={150} />
@@ -33,6 +33,12 @@ const MissionContainer = styled.div`
   margin-bottom: 1.4rem;
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
+  img {
+    width: 7rem;
+    height: 7rem;
+    align-self: center;
+  }
 `;
 
 const MissionTextContain = styled.div`
@@ -43,7 +49,7 @@ const MissionTextContain = styled.div`
   div div:first-child {
     font-weight: 100;
     margin-bottom: 0.3rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   div div:last-child {
     font-size: 1.9rem;

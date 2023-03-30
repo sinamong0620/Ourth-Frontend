@@ -11,7 +11,7 @@ const Header = (props: Props) => {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <Image src="/images/pngegg.png" alt="사진임" width={60} height={60} />
+        <Image src="/images/pngegg.png" alt="사진임" width={40} height={40} />
         <span>OURTH</span>
       </LogoContainer>
       <div onClick={showModal}>
@@ -39,6 +39,9 @@ const HeaderContainer = styled.header`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  img {
+    margin-right: 0.6rem;
+  }
   span {
     font-size: 1.9rem;
   }

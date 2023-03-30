@@ -13,8 +13,8 @@ const Profile = (props: Props) => {
       <DisplayFlex>
         <Image src="/images/user.png" alt="사진임" width={60} height={60} />
         <UserMessage>
-          <div>안녕하세요</div>
-          <div>{`${props.username ?? ""}`}님</div>
+          <div>Hello,</div>
+          <div>{`${props.username ?? ""}`}</div>
         </UserMessage>
       </DisplayFlex>
       <PointCss>{`${props.userpoint ?? ""}`}pt</PointCss>
@@ -25,14 +25,15 @@ const Profile = (props: Props) => {
 export default Profile;
 
 const MissionContainer = styled.div`
+  width: 100%;
   background: white;
   height: 6.25rem;
   border-radius: 1.8rem;
-  margin: 0 auto;
+
   margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
-  padding: 0rem 3rem 0rem 2rem;
+  padding: 1.4rem;
   justify-content: space-between;
 
   img {
@@ -61,7 +62,7 @@ const UserMessage = styled.div`
 `;
 
 const PointCss = styled.div`
-  width: 5rem;
+  width: 4.7rem;
   height: 2.3rem;
   background: #62a167;
   border-radius: 0.8rem;

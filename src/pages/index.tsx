@@ -19,8 +19,8 @@ export default function Home() {
           transition={{ delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <h1>지구의 남은</h1>
-          <h1>수명은 얼마일까요?</h1>
+          <h1>Because It&#39;s ours</h1>
+          <h1>Ourth</h1>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
@@ -28,8 +28,8 @@ export default function Home() {
           transition={{ delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <button onClick={loginRouterPush}>로그인</button>
-          <button onClick={JoinRouterPush}>회원가입</button>
+          <button onClick={loginRouterPush}>sign in</button>
+          <button onClick={JoinRouterPush}>sign up</button>
         </motion.div>
       </MainStyle>
     </MainStyleContainer>
@@ -58,8 +58,11 @@ const MainStyle = styled.div`
   div:first-child {
     color: white;
     text-shadow: 0.1rem 0.1rem 0.1rem green;
-    h1:first-child {
-      font-size: 3.3rem;
+    h1 {
+      font-size: 3rem;
+    }
+    h1:last-child {
+      text-align: center;
     }
   }
   div:last-child {

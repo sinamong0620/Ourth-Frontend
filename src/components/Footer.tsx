@@ -7,14 +7,14 @@ const Footer = () => {
       <div>
         <Link href="/main">
           <Image src="/images/home.png" alt="홈" width={30} height={30} />
-          <div>홈</div>
+          <div>Home</div>
         </Link>
       </div>
 
       <div>
         <Link href="/mission">
           <Image src="/images/checked.png" alt="미션" width={30} height={30} />
-          <div>미션</div>
+          <div>Mission</div>
         </Link>
       </div>
       <div>
@@ -25,18 +25,13 @@ const Footer = () => {
             width={30}
             height={30}
           />
-          <div>랭킹</div>
+          <div>Ranking</div>
         </Link>
       </div>
       <div>
         <Link href="/main">
-          <Image
-            src="/images/group-users.png"
-            alt="커뮤니티"
-            width={30}
-            height={30}
-          />
-          <div>커뮤니티</div>
+          <Image src="/images/pngegg.png" alt="Ourth" width={30} height={30} />
+          <div>Ourth</div>
         </Link>
       </div>
     </FotoerContainer>

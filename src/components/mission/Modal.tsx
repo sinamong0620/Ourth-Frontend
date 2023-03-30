@@ -5,6 +5,7 @@ import styled from "styled-components";
 interface IProps {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
   mId: number;
+  mission: string;
   onClose?: () => Promise<void>;
 }
 const Modal = (props: IProps) => {
@@ -41,15 +42,15 @@ const Modal = (props: IProps) => {
     <ModalBackground>
       <ModalContainer>
         <button onClick={closeModal}>x</button>
-        <p>모달입니다.</p>
-
+        <p>Write Mission feedback</p>
+        <input />
         <button
           onClick={() => {
             onCheckBoxChange();
             closeModal();
           }}
         >
-          미션 완료
+          complete
         </button>
       </ModalContainer>
     </ModalBackground>
@@ -83,10 +84,25 @@ const ModalContainer = styled.div`
   align-items: center;
   position: fixed;
 
+  input {
+    border: 1px solid #747474;
+    width: 11rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+  }
+
   button:first-child {
+    display: flex;
     align-self: end;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    min-width: 2rem;
+    height: 2rem;
+    background: red;
+    border-radius: 0 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
   }
   button:last-child {
     width: 4rem;

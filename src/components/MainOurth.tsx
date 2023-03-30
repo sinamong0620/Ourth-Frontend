@@ -14,8 +14,11 @@ import { FC, useState } from "react";
 const Page: FC = () => {
   const router = useRouter();
   const { userInfo } = useMissionList();
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-
+  const urlstring: string | string[] | undefined = [
+    "/images/recycling.jpg",
+    "/images/cutevegi.jpg",
+    "/images/factory.jpg",
+  ];
   const userMission = async () => {
     try {
       await axios.post(
@@ -80,51 +83,26 @@ const Page: FC = () => {
         viewport={{ once: true }}
       >
         <TipCommunityContain>
-          {/* <Link
-        href={{
-          pathname: "/tipdetail/1",
-          query: {
-            text: "그건 재활용이 안돼요",
-            img: "/images/recycling.jpg",
-          },
-        }}
-      > */}
           <Tip
-            title="그건 재활용이 안돼요"
-            subtitle="아직도 재활용 방법을 모른다면? "
-            imgurl="/images/recycling.jpg"
+            title="That can't be recycled!"
+            subtitle="If you still don't know how to recycle? "
+            imgurl={urlstring[0]}
+            id="1"
           />
-          {/* </Link> */}
-          {/* <Link
-        href={{
-          pathname: "/tipdetail/2",
-          query: {
-            text: "비건만 있는게 아니에요",
-            img: "/images/cutevegi.jpg",
-          },
-        }}
-      > */}
+
           <Tip
-            title="비건만 있는게 아니에요"
-            subtitle="채식주의에 대해서 알아봐요"
-            imgurl="/images/cutevegi.jpg"
+            title="Did you know there are various types of vegan options?"
+            subtitle="What are the benefits of vegetarianism?"
+            imgurl={urlstring[1]}
+            id="2"
           />
-          {/* </Link> */}
-          {/* <Link
-        href={{
-          pathname: "/tipdetail/3",
-          query: {
-            text: "공장을 없애요",
-            img: "/images/factory.jpg",
-          },
-        }}
-      > */}
+
           <Tip
-            title="기업을 없애요"
-            subtitle="공장을 안돌리면 돼요"
-            imgurl="/images/factory.jpg"
+            title="Even if factories destroy the environment"
+            subtitle="we can preserve the future through our individual efforts"
+            imgurl={urlstring[2]}
+            id="3"
           />
-          {/* </Link> */}
         </TipCommunityContain>
       </TipCommunityScroll>
     </>

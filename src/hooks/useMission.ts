@@ -36,6 +36,8 @@ const useMission = () => {
     setMissionArray([currentBadge, m1, m2, m3, m4]);
 
     setuserMission(response.data.userMissions);
+
+    console.log(response);
   }, []);
 
   useEffect(() => {

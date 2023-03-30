@@ -42,7 +42,6 @@ const Main = ({ text, start, end }: IProps) => {
       window.removeEventListener("scroll", scrollExecute);
     };
   });
-  //선배님 살려조요
 
   return <TextPosition style={{ opacity }}>{text}</TextPosition>;
 };
@@ -53,8 +52,4 @@ const TextPosition = styled.h1`
   word-break: keep-all;
   overflow-wrap: break-word;
   text-align: center;
-`;
-
-const StartButton = styled.button`
-  position: absolute;
 `;

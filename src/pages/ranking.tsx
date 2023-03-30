@@ -6,7 +6,7 @@ import EachRanking from "../components/ranking/EachRanking";
 
 export default function Ranking() {
   const { anoterranking, mySchoolRanking } = useRankingList();
-  console.log(anoterranking);
+
   const imagesFile = [
     "/images/gold1.png",
     "/images/sliver.png",
@@ -27,7 +27,7 @@ export default function Ranking() {
             />
           </div>
         ))}
-        <h1>우리 학교 랭킹</h1>
+        <h1>Our School Ranking</h1>
 
         {mySchoolRanking.map((school) => (
           <div key={school.id}>
@@ -55,10 +55,15 @@ const MainStyleContainer = styled.div`
 `;
 
 const MainStyle = styled.div`
+  h1 {
+    margin: 3rem 0rem 0.2rem 0.8rem;
+    font-size: 1.8rem;
+  }
   background-color: #f6f6f6;
   max-width: 30rem;
-  padding: 0 24px 0 24px;
+
   min-height: 100vh;
+  margin-top: 2rem;
 
   a:visited,
   a:link,

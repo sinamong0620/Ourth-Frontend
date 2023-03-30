@@ -40,13 +40,13 @@ const Modal = (props: Props) => {
     <ModalBackground>
       <ModalContainer>
         <CloseButton onClick={closeModal}>x</CloseButton>
-        <button onClick={logout}>로그아웃</button>
+        <button onClick={logout}>logout</button>
         <button
           onClick={() => {
             achievement(), closeModal();
           }}
         >
-          나의 업적
+          My Achievements
         </button>
       </ModalContainer>
     </ModalBackground>
@@ -97,7 +97,7 @@ const CloseButton = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  border-radius: 0.2rem;
+  border-radius: 0rem 1rem;
   color: white;
   display: flex;
   justify-content: center;

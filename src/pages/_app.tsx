@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import "../../styles/global.css";
 import type { AppProps } from "next/app";
 import { Provider } from "jotai";
+import React from "react";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

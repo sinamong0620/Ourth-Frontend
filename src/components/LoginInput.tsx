@@ -54,18 +54,18 @@ const LoginInput = () => {
         <input
           type="text"
           value={loginId}
-          placeholder="로그인"
+          placeholder="email"
           onChange={onChangeId}
         />
         <input
           type="password"
-          placeholder="비밀번호"
+          placeholder="password"
           onChange={onChangePassword}
         />
       </form>
-      <button onClick={onSubmitForm}>로그인</button>
+      <button onClick={onSubmitForm}>sign in</button>
       <IdPasswordFind>
-        <Link href="/join"> 회원가입 </Link>
+        <Link href="/join"> sign up </Link>
       </IdPasswordFind>
     </LoginForm>
   );

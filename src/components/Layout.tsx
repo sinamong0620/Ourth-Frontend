@@ -24,6 +24,7 @@ export default Layout;
 
 const MainStyleContainer = styled.div`
   max-width: 480px;
+  min-height: 100vh;
   margin: 0 auto;
   text-align: left;
   background: #f6f6f6;
@@ -31,7 +32,7 @@ const MainStyleContainer = styled.div`
 `;
 const MainStyle = styled.div`
   background-color: #f6f6f6;
-  max-width: 480px;
+  min-height: 100vh;
   padding: 0 1.5rem 0 1.5rem;
 
   a:visited,

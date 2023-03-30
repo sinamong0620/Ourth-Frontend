@@ -98,24 +98,24 @@ export default function Join() {
         <Image src="/images/pngegg.png" alt="사진임" width={65} height={65} />
         <form>
           <LabelInputContainer>
-            <LoginLabel>이메일</LoginLabel>
+            <LoginLabel>email</LoginLabel>
             <input
               type="text"
               value={email}
               onChange={onEmailChange}
               onBlur={onEmailChange}
-              placeholder="이메일"
+              placeholder="email"
             />
-            {isEmail && <NotPassWord>이메일을 적어주세요</NotPassWord>}
+            {isEmail && <NotPassWord>write your email</NotPassWord>}
           </LabelInputContainer>
           <LabelInputContainer>
-            <LoginLabel>비밀번호</LoginLabel>
+            <LoginLabel>password</LoginLabel>
             <input
               type="password"
               value={password}
               onChange={onPasswordChange}
               onBlur={onPasswordChange}
-              placeholder="비밀번호"
+              placeholder="password"
             />
             {isPassword && (
               <NotPassWord>비밀번호를 8자 이상 작성해주세요</NotPassWord>
@@ -123,20 +123,20 @@ export default function Join() {
           </LabelInputContainer>
 
           <LabelInputContainer>
-            <LoginLabel>비밀번호 확인</LoginLabel>
+            <LoginLabel>check password</LoginLabel>
             <input
               type="password"
               value={checkpassword}
               onChange={onPassWordCheckChange}
               onBlur={onPassWordCheckChange}
-              placeholder="비밀번호 확인"
+              placeholder="check password"
             />
             {isPasswordTrue && (
               <NotPassWord>비밀번호가 맞지 않습니다</NotPassWord>
             )}
           </LabelInputContainer>
           <LabelInputContainer>
-            <LoginLabel>학교</LoginLabel>
+            <LoginLabel>school</LoginLabel>
             {/* <input
               type="text"
               value={schoolName}
@@ -152,18 +152,18 @@ export default function Join() {
                 </option>
               ))}
             </select>
-            {isSchoolName && <NotPassWord>학교를 적어주세요</NotPassWord>}
+            {isSchoolName && <NotPassWord>write you school name</NotPassWord>}
           </LabelInputContainer>
           <LabelInputContainer>
-            <LoginLabel>이름</LoginLabel>
+            <LoginLabel>name</LoginLabel>
             <input
               type="text"
               value={username}
               onChange={onUserNameChange}
               onBlur={onUserNameChange}
-              placeholder="이름"
+              placeholder="name"
             />
-            {isUserName && <NotPassWord>이름을 적어주세요</NotPassWord>}
+            {isUserName && <NotPassWord>write your name</NotPassWord>}
           </LabelInputContainer>
         </form>
 
@@ -196,7 +196,7 @@ const MainStyle = styled.div`
   min-height: 100vh;
   background-color: white;
   max-width: 480px;
-  padding: 0 3.5rem 0 3.5rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

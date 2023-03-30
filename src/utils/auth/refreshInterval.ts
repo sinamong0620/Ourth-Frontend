@@ -13,9 +13,10 @@ const refreshInterval = async (router: NextRouter) => {
         withCredentials: true,
       }
     );
-    console.log(response);
+
     localStorage.setItem("tokenKey", response.data.data.accessToken);
     localStorage.setItem("refreshKey", response.data.data.refreshToken);
+    console.log("리프레시 되고 있음.");
   } catch (error) {
     router.push({
       pathname: "/login",

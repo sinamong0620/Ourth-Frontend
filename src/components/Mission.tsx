@@ -11,14 +11,14 @@ const today = Days[new Date().getDay()];
 const Mission = (props: IProps) => {
   return (
     <MissionContainer>
-      <div>미션</div>
+      <div>Mission</div>
       <MissionIconContainer>
         <EachIconContainer>
           <Image src="/images/fire.png" width={60} height={60} alt="체크" />
           <CurrentMissionClear>
-            <div>이번 주 미션</div>
+            <div>Week Mission</div>
             <div>
-              <b>{props.remainMission}개</b> 남음
+              Left : <b>{props.remainMission}</b>
             </div>
           </CurrentMissionClear>
         </EachIconContainer>
@@ -26,7 +26,7 @@ const Mission = (props: IProps) => {
           {typeof today === "string" ? (
             <div>{today}</div>
           ) : (
-            <div>{today}일 남음 </div>
+            <div>{today}days left</div>
           )}
         </ReaminDayCss>
       </MissionIconContainer>
@@ -40,7 +40,7 @@ const MissionContainer = styled.div`
   height: 10.5rem;
   border-radius: 1.8rem;
   margin: 0 auto;
-  padding: 1.4rem 3rem 0rem 2rem;
+  padding: 1.4rem;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1.4rem;
@@ -74,7 +74,7 @@ const CurrentMissionClear = styled.div`
 `;
 
 const ReaminDayCss = styled.div`
-  width: 5rem;
+  width: 4.7rem;
   height: 2.3rem;
   background: #62a167;
   border-radius: 0.8rem;

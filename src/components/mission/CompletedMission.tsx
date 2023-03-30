@@ -11,10 +11,10 @@ const CompletedMission = (props: IProps) => {
     <>
       <TodayMissionComponent>
         <div>
-          <Image src="/images/poo.png" width={50} height={50} alt="체크" />
+          <Image src={props.imgurl} width={50} height={50} alt="체크" />
           <TodaysMissionText>
             <div>{props.todo}</div>
-            <div>미션 완료</div>
+            <div>completed</div>
           </TodaysMissionText>
         </div>
       </TodayMissionComponent>
@@ -44,7 +44,7 @@ const TodaysMissionText = styled.div`
   margin-left: 1rem;
 
   div:first-child {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
   }
   :last-child {

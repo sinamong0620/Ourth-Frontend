@@ -19,7 +19,7 @@ const TodaysMission = (props: IProps) => {
     const scrollPosition = window.pageYOffset;
 
     body.style.overflow = "hidden";
-    //이거 추가하면 스크롤이 안되네 ..? 왤까나..
+    //이거 추가하면 스크롤이 안됨.
     // body.style.pointerEvents = "none";
     body.style.position = "fixed";
     body.style.top = `-${scrollPosition}px`;
@@ -38,19 +38,20 @@ const TodaysMission = (props: IProps) => {
       </div>
       <button
         id={String(props.id)}
-        onClick={(e) => {
+        onClick={() => {
           //모달 완성하고 나서 이거 옮겨주기
           setModalOpen(true);
           scrollStop();
         }}
       >
-        완료
+        Ok
       </button>
       {modalOpen && (
         <Modal
           setModalOpen={setModalOpen}
           mId={props.id}
           onClose={props.onSuccess}
+          mission={props.todo}
         />
       )}
     </TodayMissionComponent>
@@ -70,6 +71,7 @@ const TodayMissionComponent = styled.div`
 
   button {
     width: 3rem;
+    min-width: 3rem;
     height: fit-content;
     padding: 0.4rem;
     border: none;
@@ -89,7 +91,7 @@ const TodaysMissionText = styled.div`
   margin-left: 1rem;
 
   div:first-child {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
   }
   :last-child {
