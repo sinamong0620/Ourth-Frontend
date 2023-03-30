@@ -9,12 +9,13 @@ import useMissionList from "../hooks/useMissionList";
 import AddMission from "./AddMission";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 const Page: FC = () => {
   const router = useRouter();
   const { userInfo } = useMissionList();
-  const urlstring: string | string[] | undefined = [
+
+  const urlstring = [
     "/images/recycling.jpg",
     "/images/cutevegi.jpg",
     "/images/factory.jpg",

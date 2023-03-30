@@ -93,7 +93,9 @@ export default function Test() {
 
   return (
     <TipContainer>
-      <Image src={imgurl} width={1000} height={1000} alt="팁사진" />
+      {imgurl && (
+        <Image src={`${imgurl}`} width={1000} height={1000} alt="팁사진" />
+      )}
       <TextWrapper>
         <h1>{text}</h1>
         {recycle}
