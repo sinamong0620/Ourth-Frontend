@@ -118,7 +118,9 @@ export default function Join() {
               placeholder="password"
             />
             {isPassword && (
-              <NotPassWord>비밀번호를 8자 이상 작성해주세요</NotPassWord>
+              <NotPassWord>
+                Please enter a password of at least 8 characters
+              </NotPassWord>
             )}
           </LabelInputContainer>
 
@@ -132,7 +134,7 @@ export default function Join() {
               placeholder="check password"
             />
             {isPasswordTrue && (
-              <NotPassWord>비밀번호가 맞지 않습니다</NotPassWord>
+              <NotPassWord>password does not match</NotPassWord>
             )}
           </LabelInputContainer>
           <LabelInputContainer>
