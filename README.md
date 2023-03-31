@@ -1,38 +1,101 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ourth-Frontend
 
-## Getting Started
+GDSC Solution Challenge 2023
 
-First, run the development server:
+# Because It's Ours
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![img.png](https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/ourth.png?raw=true)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ourth-Info
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<B>"Ourth"</B> means <B>"Our + Earth."</B>  
+Providing daily-friendly solutions and content for individuals to protect the Ourth.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Ourth-Goal
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<img src = "https://developers.google.com/static/community/images/gdsc-solution-challenge/goal-13_480.png" style="width:250px"/><br/>
+We set the goal of 13. CLIMATE ACTION and targeted students around the world.<br/>  
+The goal of our project is to promote the fact that even individuals can be sufficient to take care of "our earth" and to encourage a sense of collective responsibility to protect it as something that belongs to all of us.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Ourth-Feature
 
-## Learn More
+<details>
+<summary>Missions</summary>
 
-To learn more about Next.js, take a look at the following resources:
+- We provide missions that individuals can easily contribute to the environment of the Ourth.
+- There are various missions, and four of them are randomly given each week.
+- You can receive a badge by completing all the missions for the week, and the completed missions and badges can be viewed in the "Achievement" section.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Week Mission  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/mission.png?raw=true" alt="missionImg" width=310 height=590></br>
+2. Complete  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/missionComplete.png?raw=true" alt="missionCompleteImg" width=310 height=370></br>
+3. All Complete & Badge  
+<img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/badge.png?raw=true" alt="badgeImg" width=310 height=300></br>
+</details>
+<details>
+<summary>Ranking</summary>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Students can participate in friendly competition with other schools based on the total contribution points, and they can feel a sense of belonging.
+- Currently, only universities in Korea affiliated with GDSC can participate.
 
-## Deploy on Vercel
+1. Our School Ranking  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/clickRank.png?raw=true" alt="clickRankImg" width=310 height=160></br>
+2. All Ranking & Our School Ranking  
+<img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/ranking.png?raw=true" alt="rankingImg" width=310 height=380></br>
+</details>
+<details>
+<summary>Tips</summary>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- The 'Tips' section collects information on environmental tips, news, and campaigns.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Tips  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/tips.png?raw=true" alt="tipsImg" width=310 height=320></br>
+2. Details  
+<img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/details.png?raw=true" alt="detailsImg" width=310 height=480></br>
+</details>
+<details>
+<summary>Achievement</summary>
+
+- The 'Achievement' section, you can see your actions of protecting the Ourth.
+- You can see the missions you have completed so far and the number of badges you have earned.
+
+1. Click Menu  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/achieve.png?raw=true" alt="achieveImg" width=310 height=440></br>
+2. Achievement  
+<img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/achievement.png?raw=true" alt="achievementImg" width=310 height=440></br>
+</details>
+<details>
+<summary>Ourth-chat (Preparing)</summary>
+
+- We are brainstorming content to have conversations with the Earth that feel alive.
+- The Earth will be aware of our completed missions, badges earned, and news we have read. Our goal is to form a connection between the user and the Earth, and to inspire a desire to protect the Ourth.
+- We are exploring the use of Google's Bard or OpenAI's chatgpt
+
+1. Example  
+   <img src="https://github.com/YehyeokBang/Ourth-Backend/blob/main/img/OurthChat.png?raw=true" alt="OurthChatImg" width=310 height=610></br>
+
+</details>
+
+## Backend & Flutter-app
+
+- [Backend-Repo](https://github.com/YehyeokBang/Ourth-Backend)
+- [Flutter-app-Repo](https://github.com/rltgjqmtkdydwk/Ourth-Flutter-app)
+
+## Ourth-Project Next Step
+
+1. We hope to use technologies such as Google's Bard or OpenAI's ChatGPT to make the planet we want to protect appear as if it is truly alive.
+2. We hope to provide solutions tailored to each country's situation and have a positive impact on everyone.
+
+## Tech Stack
+
+- Next.js
+- typescript
+- React
+
+## Ourth-Team
+
+| [Yehyeok Bang](https://github.com/yehyeokBang) | [Seongeun Kwak](https://github.com/HYEALL) |  [Shinah Kim](https://github.com/sinamong0620)  | [Eunchong Kim](https://github.com/rltgjqmtkdydwk) |
+| :--------------------------------------------: | :----------------------------------------: | :---------------------------------------------: | :-----------------------------------------------: |
+| <img src="https://github.com/yehyeokBang.png"> | <img src="https://github.com/HYEALL.png">  | <img src="https://github.com/sinamong0620.png"> | <img src="https://github.com/rltgjqmtkdydwk.png"> |
+|                    Backend                     |                  Backend                   |                    Frontend                     |                      Mobile                       |
